@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="forLLed.ru">
+    <meta name="author" content="liteapps.ru">
+    <title>Личный кабинет. Прототип</title>
+    <!-- plugins:css -->
+<!--    <link rel="stylesheet" href="css/mdi/materialdesignicons.css">-->
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tunes/style.css">
+    <!-- Layout style -->
+<!--    <script src="https://fb.me/react-15.1.0.js"></script>-->
+<!--    <script src="https://fb.me/react-dom-15.1.0.js"></script>-->
+<!--    <script src="https://npmcdn.com/react-router@3.0.2/umd/ReactRouter.min.js"></script>-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-body">
+      <div class="page-content-wrapper" style="margin-top: 0px">
+        <div class="page-content-wrapper-inner">
+
+          <div class="content-viewport">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-12 equel-grid">
+                <h2>Личный кабинет. Прототип</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <button type="button" id="updateData" class="btn btn-primary" onclick="updateData()">Обновить данные</button>
+              </div>
+              <div class="col-md-3 col-sm-12 col-12 equel-grid">
+                с :
+                <input id="dateFrom"/>
+              </div>
+              <div class="col-md-3 col-sm-12 col-12 equel-grid">
+                по :
+                <input id="dateTo" />
+              </div>
+              <script>
+                $('#dateFrom').datepicker({
+                  uiLibrary: 'bootstrap4'
+                });
+                $('#dateTo').datepicker({
+                  uiLibrary: 'bootstrap4'
+                });
+                function updateData(){
+                  getData();
+                }
+              </script>
+            </div>
+
+            </br>
+            <div class="row">
+
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Менеджер
+                  </a>
+
+                  <div class="dropdown-menu" id="menuManager" aria-labelledby="menuManager">
+                    <a class="dropdown-item" id="dropdown-item1" onclick="dropdown1click('menuManager', 'item1')" href="#">Action</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Контрагент
+                  </a>
+
+                  <div class="dropdown-menu" id="menuKontractor" aria-labelledby="menuKontractor">
+                    <a class="dropdown-item" id="dropdown-item2" onclick="dropdown1click('menuKontractor', 'item1')" href="#">Action</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Группа номенклатуры
+                  </a>
+
+                  <div class="dropdown-menu" id="menuNomenclature" aria-labelledby="menuNomenclature">
+                    <a class="dropdown-item" id="dropdown-item3" onclick="dropdown1click('menuNomenclature', 'item1')" href="#">Action</a>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                function dropdown1click(elementid, data){
+                  console.log(data);
+                  document.getElementById(elementid).innerText = data;
+                }
+              </script>
+            </div>
+
+            </br>
+
+            <div class="row" id="commonPanels">
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="grid bgGreen">
+                  <div class="grid-body text-gray">
+                    <p class="text-black"><strong>Today</strong></p>
+                    <div class="d-flex justify-content-between">
+                      <p>Sales:</p>
+                      <p id="salesToday">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Profit:</p>
+                      <p id="profitToday">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Margin:</p>
+                      <p id="marginToday">0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="grid bgBlue">
+                  <div class="grid-body text-gray">
+                    <p class="text-black"><strong>Yesterday</strong></p>
+                    <div class="d-flex justify-content-between">
+                      <p>Sales:</p>
+                      <p id="salesYesterday">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Profit:</p>
+                      <p id="profitYesterday">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Margin:</p>
+                      <p id="marginYesterday">0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="grid bgViolet">
+                  <div class="grid-body text-gray">
+                    <p class="text-black"><strong>This month</strong></p>
+                    <div class="d-flex justify-content-between">
+                      <p>Sales:</p>
+                      <p id="salesThisMonth">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Profit:</p>
+                      <p id="profitThisMonth">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Margin:</p>
+                      <p id="marginThisMonth">0</p>
+                    </div>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12 equel-grid">
+                <div class="grid bgYellow">
+                  <div class="grid-body text-gray">
+                    <p class="text-black"><strong>Last month</strong></p>
+                    <div class="d-flex justify-content-between">
+                      <p>Sales:</p>
+                      <p id="salesLastMonth">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Profit:</p>
+                      <p id="profitLastMonth">0</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Margin:</p>
+                      <p id="marginLastMonth">0</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 equel-grid">
+                <div class="grid">
+                  <div class="grid-body py-3">
+                    <p class="card-title ml-n1">Sales by day</p>
+                    <div class="chartdiv1" style="height: 500px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 equel-grid">
+                <div class="grid">
+                  <div class="grid-body py-3">
+                    <p class="card-title ml-n1">Sales by products</p>
+                    <div class="chartdiv2" style="height: 500px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 equel-grid">
+                <div class="grid">
+                  <div class="grid-body py-3">
+                    <p class="card-title ml-n1">Sales details</p>
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="table info-table table-bordered">
+                      <thead>
+                      <tr class="solid-header">
+                        <th>Дата</th>
+                        <th>Артикул</th>
+                        <th>Номенклатура</th>
+                        <th>Контрагент</th>
+                        <th>Организация</th>
+                        <th>Менеджер</th>
+                        <th>Кол-во</th>
+                        <th>Сумма</th>
+                      </tr>
+                      </thead>
+                      <tbody id="salesDetails">
+                      <!--                        Заполняется скриптом                        -->
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- content viewport ends -->
+      </div>
+    </div>
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- build:js -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <script src="js/template.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Chart code -->
+    <script>
+      var chart1 = am4core.create("chartdiv1", am4charts.XYChart);
+      var chart2 = am4core.create("chartdiv2", am4charts.XYChart);
+
+      function tuneXYChart(chart){
+        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+        chart.data = [{}];
+
+        var  valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+
+        var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.dataFields.category = "x";
+        categoryAxis.renderer.minGridDistance = 10;
+        //categoryAxis.fontSize = 11;
+        categoryAxis.renderer.labels.template.rotation = 270;
+        //categoryAxis.renderer.inside = true;
+
+        let labelTemplate = categoryAxis.renderer.labels.template;
+        labelTemplate.rotation = 0;
+        labelTemplate.horizontalCenter = "left";
+        labelTemplate.verticalCenter = "middle";
+        labelTemplate.dx = 20; // moves it a bit
+        //labelTemplate.inside = false;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        // valueAxis.min = 0;
+        // valueAxis.max = 24000;
+        valueAxis.strictMinMax = true;
+        valueAxis.renderer.minGridDistance = 10;
+// // axis break
+//         var axisBreak = valueAxis.axisBreaks.create();
+//         axisBreak.startValue = 10000;
+//         axisBreak.endValue = 30000;
+//         axisBreak.breakSize = 0.05;
+//
+// // make break expand on hover
+//         var hoverState = axisBreak.states.create("hover");
+//         hoverState.properties.breakSize = 1;
+//         hoverState.properties.opacity = 0.1;
+//         hoverState.transitionDuration = 1500;
+//
+//         axisBreak.defaultState.transitionDuration = 1000;
+
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.categoryY = "x";
+        series.dataFields.dateX = "x";
+        series.dataFields.valueX = "y";
+        series.columns.template.tooltipText = "{valueY.value}";
+        series.columns.template.tooltipY = 0;
+        series.columns.template.column.cornerRadiusTopLeft = 10;
+        series.columns.template.column.cornerRadiusTopRight = 10;
+        series.columns.template.column.fillOpacity = 0.8;
+        series.columns.template.strokeOpacity = 0;
+
+        var maleLabel = series.bullets.push(new am4charts.LabelBullet());
+        maleLabel.label.text = "{valueX}";
+        maleLabel.label.hideOversized = false;
+        maleLabel.label.truncate = false;
+        maleLabel.label.horizontalCenter = "right";
+        maleLabel.label.dx = -10;
+        // series.tooltip.pointerOrientation = "vertical";
+
+
+// as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+        series.columns.template.adapter.add("fill", function(fill, target) {
+          return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        //tunes
+        //chart.cursor = new am4charts.XYCursor();
+        chart.scrollbarY = new am4core.Scrollbar();
+      }
+
+      function getData(){
+        manager      = document.getElementById('menuManager').innerText;
+        kontractor   = document.getElementById('menuKontractor').innerText;
+        nomenclature = document.getElementById('menuNomenclature').innerText;
+        dateFrom     = document.getElementById('dateFrom').innerText;
+        dateTo       = document.getElementById('dateTo').innerText;
+        axios.get('../le/hs/ex?appid=ForlledWeb&action=getData&manager='+manager+'&kontractor='+kontractor+'&nomenclature='+nomenclature+'&dateFrom='+dateFrom+'&dateTo='+dateTo)
+        .then(function (response) {
+          console.log(response);
+          if(response){
+            updateCharts(response.data.data);
+            updateTables(response.data.data);
+            updateFields(response.data.data);
+          }
+          else{
+            alert(response.data);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
+
+      function updateCharts(data){
+        chart1.data = data.salesByDay;
+        chart2.data = data.salesByProducts;
+      }
+
+      function updateTables(data){
+        let innHTML = '';
+        for (let i=0;i<data.salesDeetails.length; i++){
+          let item = data.salesDeetails[i];
+          innHTML += '<tr>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.date+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.articul+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.product+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.kontractor+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.organization+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.manager+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.quantity+'</small>';
+          innHTML += '</td>';
+          innHTML += '<td class="pr-0 pl-4">';
+          innHTML += '<small>'+item.sales+'</small>';
+          innHTML += '</td>';
+          innHTML += '</tr>';
+        }
+        var container = document.getElementById('salesDetails');
+        container.innerHTML = innHTML;
+      }
+
+      function updateFields(data){
+        document.getElementById('salesToday').innerText = data.salesToday;
+        document.getElementById('salesYesterday').innerText = data.salesYesterday;
+        document.getElementById('salesThisMonth').innerText = data.salesThisMonth;
+        document.getElementById('salesLastMonth').innerText = data.salesLastMonth;
+
+        let innHTML = '';
+        for (let i=0;i<data.managers.length; i++) {
+          let item = data.managers[i];
+          innHTML += '<a class="dropdown-item" id="dropdown-item"' + i + 'onclick=dropdown1click("menuManager", '+item+'")>'+item+'</a>';
+        }
+        var container = document.getElementById('menuManager');
+        container.innerHTML = innHTML;
+        // <a class="dropdown-item" id="dropdown-item1" onclick="dropdown1click('menuManager', 'item1')" href="#">Action</a>
+      }
+
+      am4core.ready(function() {
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+        tuneXYChart(chart1);
+        tuneXYChart(chart2);
+
+        getData();
+
+      }); // end am4core.ready()
+    </script>
+  </body>
+</html>

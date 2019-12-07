@@ -1,0 +1,47 @@
+.tslogo {
+ font-family: Arial, sans-serif; 
+ font-size: 48px;
+ display: inline-flex;
+}
+
+.tslogoInv {
+ -moz-transform: scaleX(-1);
+ -o-transform: scaleX(-1);
+ -webkit-transform: scaleX(-1);
+ -ms-transform: scaleX(-1);
+ transform: scaleX(-1);
+ display: inline-flex;
+}
+
+.tslogoGreen {
+ color: #67cb4f;
+ display: inline-flex;
+ letter-spacing: -7px;
+}
+
+.tsfooter {
+ text-align: center;
+ position: page;
+ bottom: 0px;
+ justify-content: center;
+}
+
+.bgGreen{
+ background: #98FB98;
+}
+
+.bgBlue{
+ background: #AFEEEE;
+}
+
+.bgRed{
+ background: #F08080;
+}
+
+.bgViolet{
+ background: #D8BFD8;
+}
+
+.bgYellow{
+ background: #EEE8AA;
+}
